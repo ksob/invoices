@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131112095753) do
+ActiveRecord::Schema.define(version: 20131112115240) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -19,6 +19,36 @@ ActiveRecord::Schema.define(version: 20131112095753) do
     t.string   "zip_code"
     t.string   "city"
     t.string   "nip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "invoice_items", force: true do |t|
+    t.decimal  "price",      precision: 10, scale: 0
+    t.string   "name"
+    t.integer  "invoice_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invoice_items", ["invoice_id"], name: "index_invoice_items_on_invoice_id", using: :btree
+
+  create_table "invoice_notes", force: true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "invoice_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invoice_notes", ["invoice_id"], name: "index_invoice_notes_on_invoice_id", using: :btree
+  add_index "invoice_notes", ["user_id"], name: "index_invoice_notes_on_user_id", using: :btree
+
+  create_table "invoices", force: true do |t|
+    t.date     "purchase_date"
+    t.date     "issue_date"
+    t.string   "payment_period"
+    t.integer  "invoice_number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
