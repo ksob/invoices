@@ -21,6 +21,7 @@ module Invoicing
     # config.i18n.default_locale = :de
     config.generators do |g|
       g.test_framework :rspec
+      g.integration_tool :rspec
     end
 
     config.assets.paths << "#{Rails}/vendor/assets/fonts"

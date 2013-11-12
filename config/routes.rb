@@ -1,4 +1,14 @@
 Invoicing::Application.routes.draw do
+  resources :invoice_items
+
+  resources :invoice_notes
+
+  resources :invoices
+
+  resources :clients
+
+  resources :users
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

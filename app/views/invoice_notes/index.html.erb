@@ -1,0 +1,31 @@
+<h1>Listing invoice_notes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>User</th>
+      <th>Invoice</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invoice_notes.each do |invoice_note| %>
+      <tr>
+        <td><%= invoice_note.content %></td>
+        <td><%= invoice_note.user %></td>
+        <td><%= invoice_note.invoice %></td>
+        <td><%= link_to 'Show', invoice_note %></td>
+        <td><%= link_to 'Edit', edit_invoice_note_path(invoice_note) %></td>
+        <td><%= link_to 'Destroy', invoice_note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Invoice note', new_invoice_note_path %>
