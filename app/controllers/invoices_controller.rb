@@ -16,6 +16,7 @@ class InvoicesController < ApplicationController
   def new
     @invoice = Invoice.new
     @client_names_with_ids = Invoice.get_client_names_with_ids
+    @note = InvoiceNote.new
   end
 
   # GET /invoices/1/edit
