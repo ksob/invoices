@@ -1,0 +1,17 @@
+<% increment_counter %>
+<tr>
+	<td>
+		<input id=<%= "invoice_invoice_items_attributes_" + counter + "_name" %> 
+		name=<%= "invoice[invoice_items_attributes][" + counter + "][name]" %> 
+		type="text">
+	</td>
+	<td>
+		<input id=<%= "invoice_invoice_items_attributes_" + counter + "_price" %> 
+		name=<%= "invoice[invoice_items_attributes][" + counter + "][price]" %> 
+		type="number">
+	</td>
+</tr>
+
+
+
+

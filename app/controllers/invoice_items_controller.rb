@@ -17,6 +17,15 @@ class InvoiceItemsController < ApplicationController
     @invoice_item = InvoiceItem.new
   end
 
+  def new_ajax
+    p '888888888'
+    @invoice_item = InvoiceItem.new
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   # GET /invoice_items/1/edit
   def edit
   end
@@ -29,6 +38,7 @@ class InvoiceItemsController < ApplicationController
     respond_to do |format|
       if @invoice_item.save
         format.html { redirect_to @invoice_item, notice: 'Invoice item was successfully created.' }
+        format.js
         format.json { render action: 'show', status: :created, location: @invoice_item }
       else
         format.html { render action: 'new' }
