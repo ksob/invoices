@@ -3,9 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 
-# Use mysql as the database for Active Record
-gem 'mysql2'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -45,6 +42,13 @@ end
 # gem 'debugger', group: [:development, :test]
 
 group :development, :test do
+  # Use mysql as the database for Active Record
+  gem 'mysql2'
+
   gem 'rspec-rails', '~> 2.0'
   gem 'factory_girl_rails'
+end
+
+group :production do
+  gem 'pg'
 end
