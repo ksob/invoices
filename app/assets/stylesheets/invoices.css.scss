@@ -1,3 +1,12 @@
 // Place all the styles related to the Invoices controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#invoice_items {
+	border-width: 1px;
+    border-color: rgb(221,221,221);
+    border-radius: 4px 4px 0px 0px;
+}
+
+#invoice_items_caption {
+	font: small-caps 20px/20px "Times New Roman", serif;
+}
