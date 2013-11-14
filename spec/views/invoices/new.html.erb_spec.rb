@@ -14,7 +14,7 @@ describe "invoices/new" do
 
   it "renders new invoice form" do
     render
-#p response
+
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form[action=?][method=?]", invoices_path, "post" do
       assert_select "select#invoice_client_id[name=?]", "invoice[client_id]"

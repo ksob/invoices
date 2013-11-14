@@ -56,6 +56,9 @@
     <% end %>
   <% end %>
   </table>
+  <!-- CODE BELOW IS A HACK, the "id: 1" is added just 
+      because it works, however, it could be any other 
+      number as well -->
   <%= link_to "Add Item", new_ajax_invoice_item_path(id: 1), remote: true %>
   <br />
   <br />
