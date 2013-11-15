@@ -27,7 +27,12 @@ class InvoicesController < ApplicationController
   # POST /invoices
   # POST /invoices.json
   def create
-    @invoice = Invoice.new(invoice_params)
+    params = invoice_params
+    if params[:invoice_note_attributes]
+      params[:invoice_note_attributes][:user_id] = User.current_user.id
+    end
+   
+    @invoice = Invoice.new(params)
 
     respond_to do |format|
       if @invoice.save
@@ -75,6 +80,6 @@ class InvoicesController < ApplicationController
       params.require(:invoice).permit(:purchase_date, :issue_date, 
         :payment_period, :invoice_number, :client_id,
         invoice_items_attributes: [:id, :_destroy, :invoice_id, :price, :name],
-        invoice_note_attributes: [:id, :_destroy, :content])
+        invoice_note_attributes: [:id, :_destroy, :content, :invoice_id, :user_id])
     end
 end

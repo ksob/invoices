@@ -4,9 +4,17 @@ FactoryGirl.define do
     name "abc"
     invoice
   end
+
+  factory :user do
+    name Faker::Name.name
+    zip_code Faker::Address.zip_code
+    city Faker::Address.city
+    nip 1234567890
+  end
   
   factory :invoice_note do
     content "Xyz"
+    user
   end
 
   # user factory without associated posts

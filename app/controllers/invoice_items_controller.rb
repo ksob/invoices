@@ -18,7 +18,6 @@ class InvoiceItemsController < ApplicationController
   end
 
   def new_ajax
-    p '888888888'
     @invoice_item = InvoiceItem.new
 
     respond_to do |format|

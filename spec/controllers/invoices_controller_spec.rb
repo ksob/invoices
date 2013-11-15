@@ -30,6 +30,10 @@ describe InvoicesController do
   # InvoicesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  before do
+    FactoryGirl.create(:user)
+  end
+
   describe "GET index" do
     it "assigns all invoices as @invoices" do
       invoice = Invoice.create! valid_attributes
@@ -94,6 +98,14 @@ describe InvoicesController do
         Invoice.any_instance.stub(:save).and_return(false)
         post :create, {:invoice => { "purchase_date" => "invalid value" }}, valid_session
         response.should render_template("new")
+      end
+    end
+
+    describe "with note specified" do
+      it "connects a current user with the note" do
+        post :create, invoice: FactoryGirl.attributes_for(:invoice)
+          .merge({:invoice_note_attributes => {}})
+        Invoice.last.invoice_note.user.name.should_not be_empty
       end
     end
   end
