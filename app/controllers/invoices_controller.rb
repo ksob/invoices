@@ -48,8 +48,13 @@ class InvoicesController < ApplicationController
   # PATCH/PUT /invoices/1
   # PATCH/PUT /invoices/1.json
   def update
+    params = invoice_params
+    if params[:invoice_note_attributes]
+      params[:invoice_note_attributes][:user_id] = User.current_user.id
+    end
+
     respond_to do |format|
-      if @invoice.update(invoice_params)
+      if @invoice.update(params)
         format.html { redirect_to @invoice, notice: 'Invoice was successfully updated.' }
         format.json { head :no_content }
       else

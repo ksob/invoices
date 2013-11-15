@@ -152,6 +152,15 @@ describe InvoicesController do
         response.should render_template("edit")
       end
     end
+
+    describe "with note specified" do
+      it "connects a current user with the note" do
+        invoice = FactoryGirl.create(:invoice)
+        put :update, {:id => invoice.to_param, invoice: FactoryGirl.attributes_for(:invoice)}
+          .merge({:invoice_note_attributes => {}})
+        Invoice.last.invoice_note.user.name.should_not be_empty
+      end
+    end
   end
 
   describe "DELETE destroy" do
