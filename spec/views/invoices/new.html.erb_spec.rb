@@ -24,4 +24,10 @@ describe "invoices/new" do
       assert_select "input#invoice_invoice_items_attributes_100000_price[name=?]", "invoice[invoice_items_attributes][100000][price]"
     end
   end
+
+  it "renders Add Note link" do
+    render
+    
+    assert_select "#invoice_note a", "Add Note"
+  end
 end

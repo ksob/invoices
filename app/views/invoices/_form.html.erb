@@ -62,7 +62,26 @@
   <%= link_to "Add Item", new_ajax_invoice_item_path(id: 1), remote: true %>
   <br />
   <br />
+
+  <div id="invoice_note">
+    <% if @invoice.invoice_note.nil? %>
+        <%= link_to "Add Note", new_ajax_invoice_note_path(id: 1), remote: true %>
+    <% else %>
+      <%= f.fields_for :invoice_note, 
+           @invoice.invoice_note do |invoice_note| %>
+        <tr>
+          <td>
+            <div class="field">
+              <%= invoice_note.text_area :content, :cols => "65", :rows => "5" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </div>
   
+  <br />
+  <br />
 
   <div class="actions">
     <%= f.submit %>

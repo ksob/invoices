@@ -5,7 +5,11 @@ Invoicing::Application.routes.draw do
       end
   end
 
-  resources :invoice_notes
+  resources :invoice_notes do
+      member do
+        get 'new_ajax'
+      end
+  end
 
   resources :invoices
 
