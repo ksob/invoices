@@ -31,57 +31,62 @@
     <%= f.label :invoice_number %><br>
     <%= f.number_field :invoice_number %>
   </div>
+  <br />
 
-  <table id="invoice_items" class="table table-striped">
-    <span id="invoice_items_caption">Items</span>
+  <fieldset class="grouping">
+    <legend class="grouping">Items</legend>
+    <table id="invoice_items" class="table table-striped">
       <th>Name</th>
       <th>Price</th>
-  <% if @invoice.invoice_items.empty? %>
-      <%= render "invoice_items/invoice_item", :f => f %>
-  <% else %>
-    <%= f.fields_for :invoice_items, 
-         @invoice.invoice_items do |invoice_item| %>
-      <tr>
-        <td>
-          <div class="field">
-            <%= invoice_item.text_field :name %>
-          </div>
-        </td>
-        <td>
-          <div class="field">
-            <%= invoice_item.number_field :price %>
-          </div>
-        </td>
-      </tr>
-    <% end %>
-  <% end %>
-  </table>
+      <% if @invoice.invoice_items.empty? %>
+          <%= render "invoice_items/invoice_item", :f => f %>
+      <% else %>
+        <%= f.fields_for :invoice_items, 
+             @invoice.invoice_items do |invoice_item| %>
+          <tr>
+            <td>
+              <div class="field">
+                <%= invoice_item.text_field :name %>
+              </div>
+            </td>
+            <td>
+              <div class="field">
+                <%= invoice_item.number_field :price %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
   <%= link_to "Add Item", ajax_new_invoice_items_path , remote: true %>
-  <br />
+  </fieldset>
   <br />
 
-  <div id="invoice_note">
-    <% if @invoice.invoice_note.nil? %>
-        <%= link_to "Add Note", ajax_new_invoice_notes_path, remote: true %>
-    <% else %>
-      <%= f.fields_for :invoice_note, 
-           @invoice.invoice_note do |invoice_note| %>
-        <tr>
-          <td>
-            <div class="field">
-              <%= invoice_note.text_area :content, :cols => "65", :rows => "5" %>
-            </div>
-          </td>
-        </tr>
+  <fieldset class="grouping">
+    <legend class="grouping">Note</legend>
+    <div id="invoice_note">
+      <% if @invoice.invoice_note.nil? %>
+          <%= link_to "Add Note", ajax_new_invoice_notes_path, remote: true %>
+      <% else %>
+        <%= f.fields_for :invoice_note, 
+             @invoice.invoice_note do |invoice_note| %>
+          <tr>
+            <td>
+              <div class="field">
+                <%= invoice_note.text_area :content, :cols => "65", :rows => "5" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+          <a id="remove_note" href="#">Remove Note</a>
       <% end %>
-      <a id="remove_note" href="#">Remove Note</a>
-    <% end %>
-  </div>
-  
-  <br />
+    </div>
+  </fieldset>
   <br />
 
   <div class="actions">
     <%= f.submit %>
   </div>
+  <br />
+
 <% end %>
