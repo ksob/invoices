@@ -1,5 +1,5 @@
 $('#invoice_note').html("<%= escape_javascript render('invoice_notes/invoice_note') %>")
-.append('<a href="#">Remove Note</a>');
+.append('<a id="remove_note" href="#">Remove Note</a>');
 
 $('#invoice_note a').click(function() {
   $('#invoice_note').html(
