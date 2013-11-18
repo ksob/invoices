@@ -17,7 +17,7 @@ class InvoiceNotesController < ApplicationController
     @invoice_note = InvoiceNote.new
   end
 
-  def new_ajax
+  def ajax_new
     @invoice_item = InvoiceItem.new
 
     respond_to do |format|

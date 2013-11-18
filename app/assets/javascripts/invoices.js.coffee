@@ -3,6 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
   $('#invoice_note a').click -> 
-    $('#invoice_note').html "<a href='/invoice_notes/1/new_ajax' data-remote='true'>Add Note</a>"
+    $('#invoice_note').html "<a href='/invoice_notes/ajax_new' data-remote='true'>Add Note</a>"
     return false
   	

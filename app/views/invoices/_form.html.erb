@@ -56,16 +56,13 @@
     <% end %>
   <% end %>
   </table>
-  <!-- CODE BELOW IS A HACK, the "id: 1" is added just 
-      because it works, however, it could be any other 
-      number as well -->
-  <%= link_to "Add Item", new_ajax_invoice_item_path(id: 1), remote: true %>
+  <%= link_to "Add Item", ajax_new_invoice_items_path , remote: true %>
   <br />
   <br />
 
   <div id="invoice_note">
     <% if @invoice.invoice_note.nil? %>
-        <%= link_to "Add Note", new_ajax_invoice_note_path(id: 1), remote: true %>
+        <%= link_to "Add Note", ajax_new_invoice_notes_path, remote: true %>
     <% else %>
       <%= f.fields_for :invoice_note, 
            @invoice.invoice_note do |invoice_note| %>

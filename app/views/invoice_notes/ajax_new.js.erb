@@ -3,10 +3,7 @@ $('#invoice_note').html("<%= escape_javascript render('invoice_notes/invoice_not
 
 $('#invoice_note a').click(function() {
   $('#invoice_note').html(
-  		// CODE BELOW IS A HACK, the "id: 1" is added just 
-      	// because it works, however, it could be any other 
-      	// number as well
 	  	"<%= escape_javascript link_to 'Add Note', 
-	  	new_ajax_invoice_note_path(id: 1), remote: true %>"
+	  	ajax_new_invoice_notes_path, remote: true %>"
   	)
 });

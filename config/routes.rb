@@ -1,14 +1,10 @@
 Invoicing::Application.routes.draw do
   resources :invoice_items do
-      member do
-        get 'new_ajax'
-      end
+    get 'ajax_new', on: :collection
   end
 
   resources :invoice_notes do
-      member do
-        get 'new_ajax'
-      end
+    get 'ajax_new', on: :collection
   end
 
   resources :invoices
