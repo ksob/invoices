@@ -51,8 +51,10 @@ class InvoicesController < ApplicationController
     params = invoice_params
     if params[:invoice_note_attributes]
       params[:invoice_note_attributes][:user_id] = User.current_user.id
+    else
+      @invoice.invoice_note.destroy
     end
-
+    
     respond_to do |format|
       if @invoice.update(params)
         format.html { redirect_to @invoice, notice: 'Invoice was successfully updated.' }
