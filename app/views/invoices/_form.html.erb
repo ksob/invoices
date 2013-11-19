@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :client_names %><br>
+    <%= f.label :client_names, "Client" %><br>
     <%= select("invoice", "client_id", @client_names_with_ids, {include_blank: 'None'}) %>
   </div>
   <div class="field">
