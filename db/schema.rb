@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131112122832) do
+ActiveRecord::Schema.define(version: 20131120124359) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20131112122832) do
     t.date     "purchase_date"
     t.date     "issue_date"
     t.string   "payment_period"
-    t.integer  "invoice_number"
+    t.string   "invoice_number"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "client_id"
