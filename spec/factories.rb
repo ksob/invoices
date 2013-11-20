@@ -20,7 +20,7 @@ FactoryGirl.define do
   # user factory without associated posts
   factory :invoice do
     payment_period "12.11.2013 - 12.12.2013"
-    invoice_number 1234567
+    invoice_number "2013/11/19/CA/wrh7"
     invoice_note 
 
     # user_with_posts will create post data after the user has been created

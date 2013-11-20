@@ -5,6 +5,8 @@ class Invoice < ActiveRecord::Base
   accepts_nested_attributes_for :invoice_items, allow_destroy: true
   accepts_nested_attributes_for :invoice_note, allow_destroy: true
 
+  validates :invoice_number, presence: true
+
   def self.get_all_client_names
     Client.all.collect {|p| p.name }
   end

@@ -21,7 +21,7 @@ describe "invoices/edit" do
     it "renders saved value for invoice_number" do
       render
 
-      assert_select "input#invoice_invoice_number[value=?]", "1234567"
+      assert_select "input#invoice_invoice_number[value=?]", "2013/11/19/CA/wrh7"
     end
 
     it "renders saved value for invoice_note" do

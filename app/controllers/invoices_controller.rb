@@ -49,9 +49,9 @@ class InvoicesController < ApplicationController
   # PATCH/PUT /invoices/1.json
   def update
     params = invoice_params
-    if params[:invoice_note_attributes]
+    if params[:invoice_note_attributes].present?
       params[:invoice_note_attributes][:user_id] = User.current_user.id
-    else
+    elsif !@invoice.invoice_note.nil?
       @invoice.invoice_note.destroy
     end
     

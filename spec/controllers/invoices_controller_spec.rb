@@ -23,7 +23,9 @@ describe InvoicesController do
   # This should return the minimal set of attributes required to create a valid
   # Invoice. As you add validations to Invoice, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "purchase_date" => "2013-11-12" } }
+  let(:valid_attributes) { 
+    { "invoice_number" => "2013/11/19/CA/wrh7",
+      "purchase_date" => "2013-11-12" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -154,10 +156,9 @@ describe InvoicesController do
     end
 
     describe "with note specified" do
-      it "connects a current user with the note" do
+      it "connects a current user with the note", :wip => true do
         invoice = FactoryGirl.create(:invoice)
-        put :update, {:id => invoice.to_param, invoice: FactoryGirl.attributes_for(:invoice)}
-          .merge({:invoice_note_attributes => {}})
+        put :update, {:id => invoice.to_param, invoice: {:invoice_note_attributes => { "content" => "abc" }}}
         Invoice.last.invoice_note.user.name.should_not be_empty
       end
     end
