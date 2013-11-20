@@ -27,7 +27,7 @@ jQuery(document).on("ready page:change", function() {
         "Please check your input."
     );
 
-	$('#new_invoice').validate({
+	$('#new_invoice, .edit_invoice').validate({
 	     rules: {
 	         "invoice[invoice_number]": {
 	             required: true,
