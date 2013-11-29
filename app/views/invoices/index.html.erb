@@ -14,8 +14,8 @@
   </thead>
 
   <tbody>
-    <% @invoices.each do |invoice| %>
-      <tr>
+    <%= content_tag_for(:tr, @invoices, class: "listing_invoice") do |invoice| %>
+      <%= div_for(invoice, class: "listing_invoice") do %>
         <td><%= invoice.purchase_date %></td>
         <td><%= invoice.issue_date %></td>
         <td><%= invoice.payment_period %></td>
@@ -23,7 +23,7 @@
         <td><%= link_to 'Show', invoice %></td>
         <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
         <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
