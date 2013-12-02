@@ -22,7 +22,8 @@
         <td><%= invoice.invoice_number %></td>
         <td><%= link_to 'Show', invoice %></td>
         <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
-        <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', invoice, method: :delete, remote: true, 
+          class: "delete_invoice", data: { confirm: 'Are you sure?' } %></td>
       <% end %>
     <% end %>
   </tbody>

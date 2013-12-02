@@ -5,3 +5,6 @@ $(document).on "ready page:change", ->
   $('#remove_note').click -> 
     $('#invoice_note').html "<a href='/invoice_notes/ajax_new' data-remote='true'>Add Note</a>"
     return false
+  $('.delete_invoice').on "ajax:success", ->  
+    	$(this).closest('tr').fadeOut() 
+	
