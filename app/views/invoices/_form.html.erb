@@ -39,10 +39,11 @@
     <table id="invoice_items" class="table table-striped">
       <th>Name</th>
       <th>Price</th>
+      <th>Destroy</th>
       <% if @invoice.invoice_items.empty? %>
           <%= render "invoice_items/invoice_item", :f => f %>
       <% else %>
-        <%= f.fields_for :invoice_items, 
+        <%= f.fields_for :invoice_items,
              @invoice.invoice_items do |invoice_item| %>
           <tr>
             <td>
@@ -53,6 +54,11 @@
             <td>
               <div class="field">
                 <%= invoice_item.number_field :price %>
+              </div>
+            </td>
+            <td>
+              <div class="field">
+                <%= invoice_item.check_box :_destroy %>
               </div>
             </td>
           </tr>
